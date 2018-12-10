@@ -1,0 +1,194 @@
+﻿<!doctype html>
+<html class="no-js" lang="ar">
+@{ 
+    Layout = null;
+
+    
+}
+@model AqarApp.Models.AdsViewModel
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>كايرو هوم</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- build:css styles/main.css?id=71.11 -->
+    <link href="~/Content/main.css?id=71.11" rel="stylesheet" />
+    <!-- endbuild -->
+</head>
+
+<body class="rtl">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand no-padding" href="/Home/Index" title="كايرو هوم">
+
+                        <img src="~/images/akaar-logo.png"  alt="akaar logo"/>
+                        <h1 class="font-regular">كايرو هوم</h1>
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse no-padding">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Home/About">عن الشركة</a></li>
+                        <li><a class="no-padding-left-imp" href="/Admin/Logout">تسجيل خروج</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header> <section>
+        <div class="container">
+            <div class="row ad-details">
+                <div class="col-md-9 no-padding">
+                    <div class="detail-nav">
+                        <a href="/Admin/Index">
+                            <img class="back-icon" src="~/images/noun_back.svg" alt="back icon"> رجوع إلى صفحة البحث
+                        </a>
+                        <h4 class="md-title font-bold navy-blue">@Model.Title</h4>
+                        <p>
+                            <span class="location">@Model.Region</span>                          
+                            <span>@Model.Time.ToString("dddd, dd MMMM yyyy")</span>
+                        </p>
+                    </div>
+                    <div class="whole-slider-wrapper">
+                        <img  class="prev" src="~/images/prev_Arrow.svg"  alt="previous arrow" />
+                        <div class="slider-wrapper">
+                            <div class="ad-slider">
+                                @{ 
+                                    if (!string.IsNullOrEmpty(Model.img1Url1))
+                                    {
+                                            <img  width="240" height="230"  alt="" src="~/Pictures/@Model.img1Url1">
+                                    }
+                                    /*else
+                                    {
+                                            <img  width="240" height="230" alt=""  src="~/images/dummy-post-square-1.jpg">
+                                    }*/
+                                    if (!string.IsNullOrEmpty(Model.img1Url2))
+                                    {
+                                        <img width="240" height="230" alt="" src="~/Pictures/@Model.img1Url2">
+                                    }
+                                    /*else
+                                    {
+                                        <img width="240" height="230" alt="" src="~/images/dummy-post-square-1.jpg">
+                                    }*/
+                                    if (!string.IsNullOrEmpty(Model.img1Url3))
+                                    {
+                                        <img width="240" height="230" alt="" src="~/Pictures/@Model.img1Url3">
+                                    }
+                                    /*else
+                                    {
+                                        <img width="240" height="230" alt="" src="~/images/dummy-post-square-1.jpg">
+                                    }*/
+
+                                    if (!string.IsNullOrEmpty(Model.img1Url4))
+                                    {
+                                        <img width="240" height="230" alt="" src="~/Pictures/@Model.img1Url4">
+                                    }
+                                   /* else
+                                    {
+                                        <img width="240" height="230" alt="" src="~/images/dummy-post-square-1.jpg">
+                                    }*/
+                                }
+                                
+                            </div>
+                        </div>
+
+                        <img class="next" src="~/images/prev_Arrow.svg" alt="next arrow" />
+
+                    </div>
+                    <div class="row detail-table">
+                        <div class="col-md-6 no-padding">
+                            <dl class="dl-horizontal">
+                                <dt>نوع العقار</dt>
+                                <dd>@Model.Type</dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>نوع التعامل</dt>
+                                <dd>@Model.PaymentType</dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>الدور</dt>
+                                <dd>@Model.Floar</dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>التشطيب</dt>
+                                <dd>@Model.Finishing</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6 no-padding">
+                            <dl class="dl-horizontal">
+                                <dt>قابل للتفاوض</dt>
+                                @if (Model.EnableDiscount == true)
+                                {
+                                    <dd>نعم</dd>
+                                }
+                                else
+                                {
+                                   <dd>لا</dd>
+                                 }
+                                
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>المساحة</dt>
+                                <dd>@Model.Area م</dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>جوالات اخري</dt>
+@{
+
+    <dd>
+        @if (!string.IsNullOrEmpty(Model.Phone1))
+        {
+            <span>@Model.Phone1</span>
+        }
+        @if (!string.IsNullOrEmpty(Model.Phone2))
+        {
+            <span> / </span><span>@Model.Phone2</span>
+        }
+        @if (!string.IsNullOrEmpty(Model.Phone3))
+        {
+            <span> / </span><span>@Model.Phone3</span>
+        }
+        @if (!string.IsNullOrEmpty(Model.Phone4))
+        {
+            <span> / </span><span>@Model.Phone4</span>
+        }
+    </dd> 
+}
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="detail-desc">
+                        <h5>تفاصيل</h5>
+                        <p>@Model.Description</p>
+                    </div>
+                </div>
+                <div class="col-md-3 no-padding">
+                    <div class="pull-right more-info">
+                        <p class="bg-info md-title">
+                            <span>@Model.Price</span> ج.م
+                        </p>
+                        <a href="tel:01065847363" class="btn btn-primary md-title">
+                            @Model.Phone1
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/Scripts/bundle.js?id=71.11?id=71.11"></script>
+</body>
+
+</html>

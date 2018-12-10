@@ -1,0 +1,293 @@
+﻿@using AqarApp.Models;
+@model List<AqarApp.Models.AdsViewModel>
+@{
+    Layout = null;
+}
+
+<title>كايرو هوم</title>
+<!doctype html>
+<html class="no-js" lang="ar">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- build:css styles/main.css?id=71.11 -->
+    <link href="~/Content/main.css?id=71.11" rel="stylesheet" />
+    <!-- endbuild -->
+</head>
+
+<body class="rtl">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand no-padding" href="/Home/Index" title="كايرو هوم">
+                        <img src="~/images/akaar-logo.png" alt="akaar logo" />
+                        <h1 class="font-regular">كايرو هوم</h1>
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse no-padding">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Home/About">عن الشركة</a></li>
+                        <li><a href="/Admin/Home">الادارة</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header> <section>
+        <div class="container">
+            <div class="row margin-right-lg">
+                <div class="col-md-12 no-padding ">
+                    <h2 class="text-center font-bold navy-blue">ابحث عن عقارك المناسب</h2>
+                    <form class="search-form">
+                        <div class="row no-margin lg-height">
+                            <div class="form-group col-sm-6">
+                                <input name="searchQuery" type="text" class="form-control" id="inputTxtSearch" placeholder="ابحث بالعنوان"  value="@ViewBag.searchQuery">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                @Html.DropDownList("Region", new SelectList(ViewBag.regions, "Value", "Text",ViewBag.Region), new { @class = "selectpicker", @id = "inputRegion" })
+
+                                @*<select class="selectpicker" title="المنطقة" id="inputRegion">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>*@
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="inputRealEstate">نوع العقار</label>
+                                @Html.DropDownList("Type", new SelectList(ViewBag.types, "Value", "Text", ViewBag.Type), new { @class = "selectpicker", @id = "inputRegion",@style="height: auto !important;" })
+
+                                @*<select class="selectpicker"  id="inputRealEstate">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>*@
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDeal">نوع التعامل</label>
+                                @Html.DropDownList("PaymentType", new SelectList(ViewBag.paymenttypes, "Value", "Text", ViewBag.PaymentType), new { @class = "selectpicker", @id = "inputRegion", @style = "height: auto !important;" })
+
+
+                                @*<select class="selectpicker" id="inputDeal">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>*@
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group dashed-line">
+                                <label for="inputPriceFrom">السعر</label>
+                                <input name="pricefrom"  type="number" class="form-control" id="inputPriceFrom" placeholder="من" value="@ViewBag.pricefrom">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPriceTo" class="sr-only">السعر</label>
+                                <input name="priceto" type="number" class="form-control" id="inputPriceTo" placeholder="إلى" value="@ViewBag.priceto">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group dashed-line">
+                                <label for="inputAreaFrom">المساحة</label>
+                                <input  name="areafrom" type="number" class="form-control" id="inputAreaFrom" placeholder="من" value="@ViewBag.areafrom">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAreaTo" class="sr-only">المساحة</label>
+                                <input name="areato" type="number" class="form-control" id="inputAreaTo" placeholder="إلى" value="@ViewBag.areato">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="inputFinishing">التشطيب</label>
+                                @Html.DropDownList("Finishing", new SelectList(ViewBag.finishings, "Value", "Text", ViewBag.Finishing), new { @class = "selectpicker", @id = "inputRegion", @style = "height: auto !important;" })
+
+                            </div>
+                            <div class="form-group">
+                                <label for="inputFloor">الدور</label>
+                                @Html.DropDownList("Floar", new SelectList(ViewBag.floars, "Value", "Text", ViewBag.Floar), new { @class = "selectpicker", @id = "inputRegion", @style = "height: auto !important;" })
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 pull-right">
+                            <button type="submit" class="btn btn-primary">بحث</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row margin-right-lg search-results-nav">
+                <div class="col-md-12">
+                    <h5>رتب حسب : </h5>
+                    <ul class="no-padding">
+                        <li>
+                            
+                            @if (!Request.Url.ToString().Contains("newest") && !Request.Url.ToString().Contains("expensive"))
+                            {
+                                <a class="active" href="/Home/Index?newest=true" title="رتب حسب الاحدث">الأحدث</a>
+                            }
+                            else if (Request.Url.ToString().Contains("newest=true"))
+                            {
+                                <a class="active" href="/Home/Index?newest=true" title="رتب حسب الاحدث">الأحدث</a>
+                            }
+                            else
+                            {
+                                <a href="/Home/Index?newest=true" title="رتب حسب الاحدث">الأحدث</a>
+                            }
+                        </li>
+                        <li>
+                            @if (Request.Url.ToString().Contains("newest=false"))
+                            {
+                            <a  class="active" href="/Home/Index?newest=false" title="رتب حسب الأقدم">الأقدم</a>
+                            }
+                            else
+                            { 
+                            <a  href="/Home/Index?newest=false" title="رتب حسب الأقدم">الأقدم</a>
+                            }
+                        </li>
+                        <li>
+                            @if (Request.Url.ToString().Contains("expensive=false"))
+                            {
+                            <a class="active" href="/Home/Index?expensive=false" title="رتب حسب الاقل سعر">الأقل سعر</a>
+                            }
+                            else
+                            {
+                           <a  href="/Home/Index?expensive=false" title="رتب حسب الاقل سعر">الأقل سعر</a>
+                            }
+                            </li>
+                        <li>
+@if (Request.Url.ToString().Contains("expensive=true"))
+{
+                            <a class="active" href="/Home/Index?expensive=true" title="رتب حسب الاعلى سعر">الأعلى سعر</a>
+}
+else
+{
+    <a href="/Home/Index?expensive=true" title="رتب حسب الاعلى سعر">الأعلى سعر</a>
+
+}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid light-border-gray-bg">
+            <div class="container">
+                <div class="row margin-right-lg search-results">
+                    <div class="col-md-12">
+                        <h5>نتيجة البحث</h5>
+                        @foreach (var ad in Model)
+                        {
+                            <div class="media">
+                                <div class="media-left media-middle">
+
+                                    <a href="/Home/Details?adId=@ad.Id">
+                                        @{
+
+                                            if (!string.IsNullOrEmpty(ad.img1Url1))
+                                            {
+                                                <img class="media-object" width="220" height="215" src="~/Pictures/@ad.img1Url1" alt="Real Estate Photo">
+                                            }
+                                            else if (!string.IsNullOrEmpty(ad.img1Url2))
+                                            {
+                                                <img class="media-object" width="220" height="215" src="~/Pictures/@ad.img1Url2" alt="Real Estate Photo">
+                                            }
+                                            else if (!string.IsNullOrEmpty(ad.img1Url3))
+                                            {
+                                                <img class="media-object" width="220" height="215" src="~/Pictures/@ad.img1Url3" alt="Real Estate Photo">
+                                            }
+                                            else if (!string.IsNullOrEmpty(ad.img1Url4))
+                                            {
+                                                <img class="media-object" width="220" height="215" src="~/Pictures/@ad.img1Url4" alt="Real Estate Photo">
+                                            }
+                                            else
+                                            {
+                                                <img class="media-object" width="220" height="215" src="~/images/dummy-post-square-1.jpg" alt="Real Estate Photo">
+                                            }
+                                        }
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="col-sm-12">
+                                        <div class="pull-left">
+
+                                            <h4 class="media-heading">
+                                                <a href="/Admin/Details?adId=@ad.Id">@ad.Title</a>
+                                            </h4>
+                                            <p>@ad.Type</p>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-sm-12 clearfix">
+                                        <h3 class="price"><span>@ad.Price</span><span>ج.م</span></h3>
+                                    </div>
+                                    <div class="col-sm-12 top-border">
+                                        <div class="pull-left">
+                                            <p>
+                                                @ad.Time.ToString("dddd, dd MMMM yyyy")
+                                            </p>
+                                            <p class="no-margin">@ad.Region</p>
+                                        </div>
+                                        <div class="pull-right ad-owner-info">
+                                            <div>
+                                                <span>@ad.By</span>
+                                                <img src="~/images/noun_User.svg" alt="user icon">
+                                            </div>
+                                            <div>
+                                                <span>@ad.Phone1</span>
+                                                @if (!string.IsNullOrEmpty(ad.Phone2))
+                                                {
+                                                    <span>/ @ad.Phone2</span>
+                                                }
+                                                @if (!string.IsNullOrEmpty(ad.Phone3))
+                                                {
+                                                    <span>/ @ad.Phone3</span>
+                                                }
+
+                                                @if (!string.IsNullOrEmpty(ad.Phone4))
+                                                {
+                                                    <span>/ @ad.Phone4</span>
+                                                }
+                                                <img src="~/images/noun_call.svg" alt="user icon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                            }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/Scripts/bundle.js?id=71.11"></script>
+</body>
+
+</html>
