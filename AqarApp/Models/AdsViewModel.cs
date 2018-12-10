@@ -23,7 +23,8 @@ namespace AqarApp.Models
        public string img1Url2 { get; set; }
        public string img1Url3 { get; set; }
        public string img1Url4 { get; set; }
-       public string Phone1 { get; set; }
+       public string videoUrl { get; set; }
+        public string Phone1 { get; set; }
        public string Phone2 { get; set; }
        public string Phone3 { get; set; }
        public string Phone4 { get; set; }

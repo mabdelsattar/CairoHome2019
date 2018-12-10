@@ -31,6 +31,7 @@
           <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="50" />
           <Property Name="PhoneNumber4" Type="nvarchar" MaxLength="50" />
           <Property Name="FinishId" Type="int" />
+          <Property Name="videoUrl" Type="nvarchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="Finishing">
           <Key>
@@ -250,6 +251,7 @@
           <NavigationProperty Name="Region" Relationship="AqarDBModel.FK_Ad_Region" FromRole="Ad" ToRole="Region" />
           <NavigationProperty Name="Type" Relationship="AqarDBModel.FK_Ad_Type" FromRole="Ad" ToRole="Type" />
           <NavigationProperty Name="UserInfo" Relationship="AqarDBModel.FK_Ad_UserInfo" FromRole="Ad" ToRole="UserInfo" />
+          <Property Name="videoUrl" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Finishing">
           <Key>
@@ -382,6 +384,7 @@
           <EntitySetMapping Name="Ads">
             <EntityTypeMapping TypeName="AqarDBModel.Ad">
               <MappingFragment StoreEntitySet="Ad">
+                <ScalarProperty Name="videoUrl" ColumnName="videoUrl" />
                 <ScalarProperty Name="FinishId" ColumnName="FinishId" />
                 <ScalarProperty Name="PhoneNumber4" ColumnName="PhoneNumber4" />
                 <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />

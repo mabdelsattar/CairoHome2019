@@ -212,7 +212,8 @@ namespace AqarApp.Controllers
                     img1Url2 = dbAd.Image2,
                     img1Url3 = dbAd.Image3,
                     img1Url4 = dbAd.Image4,
-                    Finishing = dbAd.Finishing.FininshName
+                    Finishing = dbAd.Finishing.FininshName,
+                    videoUrl = dbAd.videoUrl
                 };
 
 

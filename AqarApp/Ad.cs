@@ -36,6 +36,7 @@ namespace AqarApp
         public string PhoneNumber3 { get; set; }
         public string PhoneNumber4 { get; set; }
         public Nullable<int> FinishId { get; set; }
+        public string videoUrl { get; set; }
     
         public virtual Finishing Finishing { get; set; }
         public virtual Floor Floor { get; set; }

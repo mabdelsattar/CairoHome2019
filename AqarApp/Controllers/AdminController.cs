@@ -58,7 +58,9 @@ namespace AqarApp.Controllers
                     img1Url2 = dbAd.Image2,
                     img1Url3 = dbAd.Image3,
                     img1Url4 = dbAd.Image4,
-                    Finishing = dbAd.Finishing.FininshName
+                    Finishing = dbAd.Finishing.FininshName,
+                    videoUrl = dbAd.videoUrl
+
                 };
 
 
@@ -216,7 +218,7 @@ namespace AqarApp.Controllers
 
         [CustomAuthorizeAttripute(Roles = "1")]
         [HttpPost]
-        public ActionResult CreateAdv(AdsModel model, HttpPostedFileBase inputFileImage1, HttpPostedFileBase inputFileImage2, HttpPostedFileBase inputFileImage3, HttpPostedFileBase inputFileImage4)
+        public ActionResult CreateAdv(AdsModel model, HttpPostedFileBase inputFileImage1, HttpPostedFileBase inputFileImage2, HttpPostedFileBase inputFileImage3, HttpPostedFileBase inputFileImage4, HttpPostedFileBase inputFileVideo)
         {
             string currentusername = SessionPersister.Username;
             var currentUser = db.UserInfoes.Where(u => u.Username.ToLower() == currentusername.ToLower()).FirstOrDefault();
@@ -278,6 +280,16 @@ namespace AqarApp.Controllers
                 var pathToSave = Path.Combine(directoryToSave, fileName);
                 inputFileImage4.SaveAs(pathToSave);
                 ad.Image4 = fileName;
+            }
+
+            if (inputFileVideo != null)
+            {
+                var fileName = Guid.NewGuid() + Path.GetFileName(inputFileVideo.FileName);
+                var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
+
+                var pathToSave = Path.Combine(directoryToSave, fileName);
+                inputFileVideo.SaveAs(pathToSave);
+                ad.videoUrl = fileName;
             }
 
 
