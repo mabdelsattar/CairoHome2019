@@ -245,49 +245,52 @@ namespace AqarApp.Controllers
 
             if (inputFileImage1 != null)
             {
-                var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage1.FileName);
+                var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage1.FileName);
                 var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                var pathToSave = Path.Combine(directoryToSave, fileName);
+                  var pathToSave = Path.Combine(directoryToSave, fileName);
+                
                 inputFileImage1.SaveAs(pathToSave);
+
                 ad.Image1 = fileName;
             }
             if (inputFileImage2 != null)
             {
-                var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage2.FileName);
+                var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage2.FileName);
                 var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                var pathToSave = Path.Combine(directoryToSave, fileName);
+                  var pathToSave = Path.Combine(directoryToSave, fileName);
+                
                 inputFileImage2.SaveAs(pathToSave);
                 ad.Image2 = fileName;
             }
 
             if (inputFileImage3 != null)
             {
-                var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage3.FileName);
+                var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage3.FileName);
                 var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                var pathToSave = Path.Combine(directoryToSave, fileName);
+                  var pathToSave = Path.Combine(directoryToSave, fileName);
                 inputFileImage3.SaveAs(pathToSave);
                 ad.Image3 = fileName;
             }
 
             if (inputFileImage4 != null)
             {
-                var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage4.FileName);
+                var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage4.FileName);
                 var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                var pathToSave = Path.Combine(directoryToSave, fileName);
+                  var pathToSave = Path.Combine(directoryToSave, fileName);
                 inputFileImage4.SaveAs(pathToSave);
                 ad.Image4 = fileName;
             }
 
             if (inputFileVideo != null)
             {
-                var fileName = Guid.NewGuid() + Path.GetFileName(inputFileVideo.FileName);
+                var fileName = Guid.NewGuid() + Path.GetExtension(inputFileVideo.FileName);
                 var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                var pathToSave = Path.Combine(directoryToSave, fileName);
+                  var pathToSave = Path.Combine(directoryToSave, fileName);
                 inputFileVideo.SaveAs(pathToSave);
                 ad.videoUrl = fileName;
             }
@@ -491,10 +494,10 @@ namespace AqarApp.Controllers
                     if (inputFileImage1 != null)
                     {
 
-                        var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage1.FileName);
+                        var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage1.FileName);
                         var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                        var pathToSave = Path.Combine(directoryToSave, fileName);
+                          var pathToSave = Path.Combine(directoryToSave, fileName);
                         inputFileImage1.SaveAs(pathToSave);
                         dbAd.Image1 = fileName;
                     }
@@ -525,10 +528,10 @@ namespace AqarApp.Controllers
                     if (inputFileImage2 != null)
                     {
 
-                        var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage2.FileName);
+                        var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage2.FileName);
                         var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                        var pathToSave = Path.Combine(directoryToSave, fileName);
+                          var pathToSave = Path.Combine(directoryToSave, fileName);
                         inputFileImage2.SaveAs(pathToSave);
                         dbAd.Image2 = fileName;
                     }
@@ -558,10 +561,10 @@ namespace AqarApp.Controllers
                     if (inputFileImage3 != null)
                     {
 
-                        var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage3.FileName);
+                        var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage3.FileName);
                         var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                        var pathToSave = Path.Combine(directoryToSave, fileName);
+                          var pathToSave = Path.Combine(directoryToSave, fileName);
                         inputFileImage3.SaveAs(pathToSave);
                         dbAd.Image3 = fileName;
                     }
@@ -591,10 +594,10 @@ namespace AqarApp.Controllers
                     if (inputFileImage4 != null)
                     {
 
-                        var fileName = Guid.NewGuid() + Path.GetFileName(inputFileImage4.FileName);
+                        var fileName = Guid.NewGuid() + Path.GetExtension(inputFileImage4.FileName);
                         var directoryToSave = Server.MapPath(Url.Content("~/Pictures"));
 
-                        var pathToSave = Path.Combine(directoryToSave, fileName);
+                          var pathToSave = Path.Combine(directoryToSave, fileName);
                         inputFileImage4.SaveAs(pathToSave);
                         dbAd.Image4 = fileName;
                     }
